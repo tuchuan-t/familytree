@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.springboot.familytree.mapper.HumanInfoMapper">
+
+
+    <insert id="addHumanInfo" parameterType="com.springboot.familytree.bean.HumanInfo">
+        insert into human_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="full_name != null and full_name != ''">
+                full_name,
+            </if>
+            <if test="english_name != null and english_name !=''">
+                english_name,
+            </if>
+            <if test="registered_residence != null and registered_residence !=''">
+                registered_residence,
+            </if>
+            <if test="identity_card != null and identity_card !=''">
+                identity_card,
+            </if>
+            <if test="nation != null and nation !=''">
+                nation,
+            </if>
+            <if test="sex != null and sex !=''">
+                sex,
+            </if>
+            <if test="birthday != null and birthday !=''">
+                birthday,
+            </if>
+            <if test="photo_url != null and photo_url !=''">
+                photo_url,
+            </if>
+            <if test="political_status != null and political_status !=''">
+                political_status,
+            </if>
+            <if test="blood_type != null and blood_type !=''">
+                blood_type,
+            </if>
+            <if test="height != null and height !=''">
+                height,
+            </if>
+            <if test="sketch != null and sketch !=''">
+                sketch,
+            </if>
+            <if test="email != null and email !=''">
+                email,
+            </if>
+            <if test="phone != null and phone !=''">
+                phone,
+            </if>
+            <if test="marital_status != null and marital_status !=''">
+                marital_status,
+            </if>
+            <if test="time_to_work != null and time_to_work !=''">
+                time_to_work,
+            </if>
+            <if test="record_of_formal_schooling != null and record_of_formal_schooling !=''">
+                record_of_formal_schooling,
+            </if>
+            <if test="status != null and status !=''">
+                status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="full_name != null and full_name != ''">
+                #{full_name},
+            </if>
+            <if test="english_name != null and english_name !=''">
+                #{english_name},
+            </if>
+            <if test="registered_residence != null and registered_residence !=''">
+                #{registered_residence},
+            </if>
+            <if test="identity_card != null and identity_card !=''">
+                #{identity_card},
+            </if>
+            <if test="nation != null and nation !=''">
+                #{nation},
+            </if>
+            <if test="sex != null and sex !=''">
+                #{sex},
+            </if>
+            <if test="birthday != null and birthday !=''">
+                #{birthday},
+            </if>
+            <if test="photo_url != null and photo_url !=''">
+                #{photo_url},
+            </if>
+            <if test="political_status != null and political_status !=''">
+                #{political_status},
+            </if>
+            <if test="blood_type != null and blood_type !=''">
+                #{blood_type},
+            </if>
+            <if test="height != null and height !=''">
+                #{height},
+            </if>
+            <if test="sketch != null and sketch !=''">
+                #{sketch},
+            </if>
+            <if test="email != null and email !=''">
+                #{email},
+            </if>
+            <if test="phone != null and phone !=''">
+                #{phone},
+            </if>
+            <if test="marital_status != null and marital_status !=''">
+                #{marital_status},
+            </if>
+            <if test="time_to_work != null and time_to_work !=''">
+                #{time_to_work},
+            </if>
+            <if test="record_of_formal_schooling != null and record_of_formal_schooling !=''">
+                #{record_of_formal_schooling},
+            </if>
+            <if test="status != null and status !=''">
+                #{status},
+            </if>
+        </trim>
+    </insert>
+
+
+    <delete id="deleteHumanInfo">
+        delete from human_info
+        where
+        id = #{id}
+    </delete>
+
+
+    <update id="updateUser">
+        update user
+        set age = #{age} where id=#{id}
+    </update>
+
+
+    <select id="findUserByUserName" resultType="com.springboot.familytree.bean.HumanInfo">
+        select * from user
+        <where>
+            username = #{username}
+        </where>
+    </select>
+
+    <select id="checkHumanInfoByIdentity" resultType="com.springboot.familytree.bean.HumanInfo">
+        select * from human_info
+        where identity_card = #{identity_card}
+    </select>
+
+
+    <select id="checkHumanInfoById" resultType="com.springboot.familytree.bean.HumanInfo">
+        select * from human_info
+        where id = #{id}
+    </select>
+
+
+
+</mapper>
