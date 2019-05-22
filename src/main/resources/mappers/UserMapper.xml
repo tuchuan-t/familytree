@@ -7,7 +7,7 @@
     <select id="findUserByUserName" resultType="com.titian.familytree.bean.User">
         select * from user
         <where>
-            username = #{username}
+            username like %#{userName}%
         </where>
     </select>
 

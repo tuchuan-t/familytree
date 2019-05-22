@@ -1,6 +1,7 @@
 package com.titian.familytree.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.titian.familytree.bean.User;
 import com.titian.familytree.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,11 @@ public class TestUsers {
     private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public List<User> findUsers(@RequestParam(name = "userName") String userName) {
-        List<User> list = (List<User>) userService.findUserByUserName(userName);
-        if (list.size() > 0) {
-            return list;
+    public PageInfo<User> findUsers(@RequestParam(name = "userName") String userName) {
+        PageInfo<User> pagelist = userService.findUserByUserName(userName);
+
+        if (pagelist.getSize() > 0) {
+            return pagelist;
         } else {
             return null;
         }

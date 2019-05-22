@@ -54,9 +54,9 @@ public class HumanInfoServiceImpl implements HumanInfoService {
      */
     public int updateHumanInfo(HumanInfoVO humanInfoVO) {
         HumanInfo humanInfo = humanInfoMapper.checkHumanInfoById(humanInfoVO);
-        if(humanInfo.getId()!=0){
+        if (humanInfo.getId() != 0) {
             return humanInfoMapper.updateHumanInfo(humanInfoVO);
-        }else{
+        } else {
             return 0;
         }
     }
