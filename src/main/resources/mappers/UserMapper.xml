@@ -4,11 +4,11 @@
 
 <mapper namespace="com.titian.familytree.mapper.UserMapper">
 
-    <select id="findUserByUserName" resultType="com.titian.familytree.bean.User">
+    <select id="findUserByUserName" resultType="com.titian.familytree.bean.vo.UserVO">
         select * from user
-        <where>
-            username like %#{userName}%
-        </where>
+        <!--<where>-->
+            <!--username like %#{userName}%-->
+        <!--</where>-->
     </select>
 
 

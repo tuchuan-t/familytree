@@ -2,6 +2,7 @@ package com.titian.familytree.mapper;
 
 
 import com.titian.familytree.bean.User;
+import com.titian.familytree.bean.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    public List<User> findUserByUserName(String username);
+    public List<UserVO> findUserByUserName(String username);
 
     public int addUser(User user);
 

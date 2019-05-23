@@ -3,6 +3,7 @@ package com.titian.familytree.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.titian.familytree.bean.User;
+import com.titian.familytree.bean.vo.UserVO;
 import com.titian.familytree.mapper.UserMapper;
 import com.titian.familytree.service.service.UserService;
 import org.springframework.stereotype.Service;
@@ -17,22 +18,19 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
-    public PageInfo<User> findUserByUserName(String userName) {
+    public PageInfo<UserVO> findUserByUserName(String userName, int pageNum) {
         /***
          * pageHelper 分页
          */
-        int pageNum = 1,pageSize=1;
+        int pageSize=5;
 
         PageHelper.startPage(pageNum,pageSize);
 
-        List<User> listTest = userMapper.findUserByUserName(userName);
+        List<UserVO> listUsers = userMapper.findUserByUserName(userName);
 
-        PageInfo<User> pagelist = new PageInfo<>(listTest);
+        PageInfo<UserVO> pageInfo = new PageInfo<>(listUsers);
 
-        System.out.println(listTest.size()+"||"+pagelist.getSize());
-
-//        List<User> list = userMapper.findUserByUserName(userName);
-        return pagelist;
+        return pageInfo;
     }
 
     public int addUser(User user) {

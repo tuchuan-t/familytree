@@ -1,8 +1,11 @@
 package com.titian.familytree.controller;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.titian.familytree.bean.User;
+import com.titian.familytree.bean.vo.UserVO;
 import com.titian.familytree.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,17 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class TestUsers {
+public class TestUsersController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public PageInfo<User> findUsers(@RequestParam(name = "userName") String userName) {
-        PageInfo<User> pagelist = userService.findUserByUserName(userName);
+    @RequestMapping(value = "/query", method = RequestMethod.GET)
+    public PageInfo<UserVO> findUsers(@RequestParam(name = "userName") String userName, @RequestParam(name="pageNum") int pageNum) {
 
-        if (pagelist.getSize() > 0) {
-            return pagelist;
+        PageInfo<UserVO> page = userService.findUserByUserName(userName,pageNum);
+
+        if (page.getSize() > 0) {
+            return page;
         } else {
             return null;
         }

@@ -2,6 +2,7 @@ package com.titian.familytree.service.service;
 
 import com.github.pagehelper.PageInfo;
 import com.titian.familytree.bean.User;
+import com.titian.familytree.bean.vo.UserVO;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface UserService {
      * @param userName
      * @return
      */
-    public PageInfo<User> findUserByUserName(String userName);
+    public PageInfo<UserVO> findUserByUserName(String userName, int pageNum);
 
     /**
      * 添加用户
